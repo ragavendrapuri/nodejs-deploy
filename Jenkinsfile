@@ -3,6 +3,7 @@ pipeline {
 	
 	environment {
 		IMAGE_NAME = "nodejs-devops-app"
+		DOCKERHUB_USER = "puriraghavendra14@gmail.com" 
 		IMAGE_TAG = "ci-${BUILD_NUMBER}"	
 	}
 
