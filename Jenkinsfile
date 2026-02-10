@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	
-	enviornment {
+	environment {
 		IMAGE_NAME = "nodejs-devops-app"
 		IMAGE_TAG = "ci-${BUILD-NUMBER}"	
 	}
