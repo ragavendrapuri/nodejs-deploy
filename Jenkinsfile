@@ -2,7 +2,8 @@ pipeline {
 	agent any
 	
 	environment {
-		IMAGE_NAME = "nodejs-devops-app"	
+		IMAGE_NAME = "nodejs-devops-app"
+		IMAGE_TAG = ""	
 	}
 
 
