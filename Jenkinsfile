@@ -3,7 +3,7 @@ pipeline {
 	
 	environment {
 		IMAGE_NAME = "nodejs-devops-app"
-		IMAGE_TAG = ""	
+		IMAGE_TAG = "ci-${BUILD_NUMBER}"	
 	}
 
 
@@ -18,27 +18,27 @@ pipeline {
 
 	stage("Build Docker Image") {
 		steps {
-        		sh """
+        		sh '''
           			docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
-        		"""
+        		'''
       		}
     	}
 
     	stage("Smoke Test") {
       		steps {
-        		sh """
+        		sh '''
           			docker run -d -p 3001:3000 --name test-${BUILD_NUMBER} ${IMAGE_NAME}:${IMAGE_TAG}
           			sleep 5
           			docker ps | grep test-${BUILD_NUMBER}
-        		"""
+        		'''
       		}
     	}
 
     	stage("Cleanup") {
       		steps {
-        		sh """
+        		sh '''
           			docker rm -f test-${BUILD_NUMBER} || true
-        		"""
+        		'''
       		}
     	}
   
